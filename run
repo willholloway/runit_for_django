@@ -1,0 +1,12 @@
+#!/bin/sh
+
+GUNICORN=~/project/venv/bin/gunicorn_django
+ROOT=~/project/project
+PID=/var/run/project.pid
+
+if [ -f $PID ]
+    then rm $PID
+fi
+
+cd $ROOT
+exec $GUNICORN --pid=$PID -w 1
